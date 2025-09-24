@@ -1,0 +1,14 @@
+[package]
+name = "ser_tool"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "High-performance sequence scanning and hit calculation using Rust and PyO3"
+
+[lib]
+name = "ser_tool"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.21", features = ["extension-module"] }
+rayon = "1.8"
