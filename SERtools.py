@@ -1,4 +1,4 @@
-# main.py - Repeat Sequence Analyzer (Dark Mode)
+# SERtool.py
 import os
 import argparse
 import time
@@ -127,11 +127,8 @@ def process_task(
     lengths = [len(w) for w in words]
     if not all(l == pattern_length for l in lengths):
         cprint(f"Warning: Task words have different lengths: {dict(zip(words, lengths))}. Using {pattern_length}.", 'warn')
-
-    # 日志保存在共享目录下
     logger, log_file = setup_logger(task_words, log_dir=shared_output_dir)
 
-    # Excel 文件也保存在共享目录
     task_safe_name = task_words.replace("-", "_").replace(" ", "")
     excel_file = os.path.join(shared_output_dir, f"{task_safe_name}.xlsx")
 
@@ -306,4 +303,5 @@ def main():
         cprint(f"  • {r['task']:12} → {r['genes_found']:3} genes | {r['time']:6.2f}s", 'success')
 
 if __name__ == "__main__":
+
     main()
