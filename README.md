@@ -2,11 +2,9 @@
 This tool is used to search for proteins with repetitive sequence amino acids and can also be applied to the search of nucleic acid sequences.
 
 
-
-
 # Usage:
 
-python main.py [TARGET] --input FILE --start INT --point INT INT [INT INT]
+python SERtool.py [TARGET] --input FILE --start INT --point INT INT [INT INT]
 
 High-performance sequence scanning tool powered by Rust. Scans protein sequences for amino acid patterns with dynamic hit thresholds.
 
@@ -38,17 +36,17 @@ Optional Arguments:
   -h, --help            Show this help message and exit
 
 Examples:
-  # Independent scan for 20 amino acids
-  python main.py A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y --input clinvar_mutant.fasta --start 20 --point 18 20 30 50
+  Independent scan for 20 amino acids:
+  python SERtool.py A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y --input clinvar_mutant.fasta --start 20 --point 18 20 30 50
 
-  # Combined D-E analysis
-  python main.py D-E --input clinvar_mutant.fasta --start 20 --point 18 20 30 50
+  Combined D-E analysis:
+  python SERtool.py D-E --input clinvar_mutant.fasta --start 20 --point 18 20 30 50
 
-  # Find ≥10 consecutive matches
-  python main.py D,E --input clinvar_mutant.fasta --start 10 --point 20 20 30 30
+  Find ≥10 consecutive matches:
+  python SERtool.py D,E --input clinvar_mutant.fasta --start 10 --point 20 20 30 30
 
-  # Wildcard: all X-S motifs (e.g., DS, RS)
-  python main.py .S --input clinvar_mutant.fasta --start 15 --point 10 10 25 20
+  Wildcard: all X-S motifs (e.g., DS, RS)
+  python SERtool .S --input clinvar_mutant.fasta --start 15 --point 5 10 10 30
 
-  # Fixed mode: find regions with at least 30 hits in 50aa
-  python main.py A --input clinvar_mutant.fasta --mode fix --point 50 30
+  Fixed mode: find regions with at least 30 hits in 50aa
+  python SERtool.py A --input clinvar_mutant.fasta --mode fix --point 30 50
