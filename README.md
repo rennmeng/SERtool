@@ -12,14 +12,21 @@ High-performance sequence scanning tool powered by Rust. Scans protein sequences
 ### Prerequisites
 This tool is written in Rust and requires:
   1. Rust toolchain: 
+     ```bash
      cd SERtool
-
+     ```
   2. maturin (Python): 
+     ```bash
      pip install maturin
+     ```
 Build the extension first:
+  ```bash
   maturin develop    # for development
+  ```
   or
+  ```bash
   maturin build --release && pip install target/wheels/*.whl
+  ```
 
 ### Positional Arguments
 [TARGET]              Amino acid pattern(s) to scan for.
@@ -61,25 +68,23 @@ Fixed mode: find regions with at least 30 hits in 50aa
 python SERtool.py A --input clinvar_mutant.fasta --mode fix --point 30 50
 ```
 
-
 Consecutive Mode: Screen consecutive target sequences
 Format: --point hit1 hit1 hit2 hit2
-Example: Find ≥10 consecutive matches: ***start=10***
+Example: Find ≥10 consecutive matches: ***start***
 ```bash
 python SERtool.py D,E --input clinvar_mutant.fasta --start 10 --point 20 20 30 30
 ```
 
-
 Score Mode: Use weighted scoring (e.g., each hit counts as 1, but some positions contribute extra score).
 Format: --point hit1 [2*hit1 + score] hit2 [2*hit2 + score]
-Example: Interpreted as: threshold = 2×hit + 5. Enables non-linear sensitivity: ***score=5***
+Example: Interpreted as: threshold = 2×hit + 5. Enables non-linear sensitivity: ***score***
 ```bash
 python SERtool.py A --input clinvar_mutant.fasta --start 15 --point 10 25 20 45
 ```
 
 Rate Mode: Use proportional threshold (e.g., k×hit) for density-based filtering.
 Format: --point hit1 [k*hit1] hit2 [k*hit2]
-Example: Interpreted as: threshold = 3×hit (k=3). Ensures high-density regions (e.g., ≥30% occupancy): ***k=3***
+Example: Interpreted as: threshold = 3×hit (k=3). Ensures high-density regions (e.g., ≥30% occupancy): ***k***
 ```bash
 python SERtool.py A --input clinvar_mutant.fasta --start 15 --point 10 30 20 60
 ```
