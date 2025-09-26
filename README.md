@@ -77,14 +77,14 @@ python SERtool.py D,E --input clinvar_mutant.fasta --start 10 --point 20 20 30 3
 
 Score Mode: Use weighted scoring (e.g., each hit counts as 1, but some positions contribute extra score).
 Format: --point hit1 [2*hit1 + score] hit2 [2*hit2 + score]
-Example: Interpreted as: threshold = 2×hit + 10. Enables non-linear sensitivity: ***score=10***
+Example: Interpreted as: window = 2×hit + 10. Enables non-linear sensitivity: ***score=10***
 ```bash
 python SERtool.py A --input clinvar_mutant.fasta --start 15 --point 10 30 20 50
 ```
 
 Rate Mode: Use proportional threshold (e.g., k×hit) for density-based filtering.
 Format: --point hit1 [k*hit1] hit2 [k*hit2]
-Example: Interpreted as: threshold = 3×hit (k=3). Ensures high-density regions (e.g., ≥30% occupancy): ***k=3***
+Example: Interpreted as: window= 3×hit (k=3). Ensures high-density regions (e.g., ≥30% occupancy): ***k=3***
 ```bash
 python SERtool.py A --input clinvar_mutant.fasta --start 15 --point 10 30 20 60
 ```
