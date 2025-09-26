@@ -18,7 +18,7 @@ This tool is written in Rust and requires:
      ```
   2. maturin (Python): 
      ```bash
-     pip install maturin
+     pip install .
      ```
 Build the extension first:
   ```bash
