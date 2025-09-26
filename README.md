@@ -1,52 +1,85 @@
 # SERtool
+
 This tool is used to search for proteins with repetitive sequence amino acids and can also be applied to the search of nucleic acid sequences.
 
-
-# Usage:
-
+## Usage
+```bash
 python SERtool.py [TARGET] --input FILE --start INT --point INT INT [INT INT]
+```
 
 High-performance sequence scanning tool powered by Rust. Scans protein sequences for amino acid patterns with dynamic hit thresholds.
 
-Prerequisites:
-  This tool is written in Rust and requires:
-    1. Rust toolchain: cd SERtool
-    2. maturin (Python): pip install maturin
-  Build the extension first:
-    maturin develop    # for development
-    or
-    maturin build --release && pip install target/wheels/*.whl
+### Prerequisites
+This tool is written in Rust and requires:
+  1. Rust toolchain: 
+     cd SERtool
 
-Positional Arguments:
-  [TARGET]              Amino acid pattern(s) to scan for.
-                        Formats:
-                          X,Y    : independent tasks (e.g., D,E)
-                          X-Y    : combined task (e.g., D-E → polyDE)
-                          .X     : wildcard (e.g., .E → DE, AE, RE...), excludes XX
+  2. maturin (Python): 
+     pip install maturin
+Build the extension first:
+  maturin develop    # for development
+  or
+  maturin build --release && pip install target/wheels/*.whl
 
-Required Arguments:
-  --input FILE          Input FASTA file (e.g., clinvar_mutant.fasta)
-  --start INT           Starting window size (e.g., 20)
-  --point x1 y1 [x2 y2] Points defining hit threshold vs window size.
-                        Example: 18 20 30 50 → linear model from (18,20) to (30,50)
-                        Use two points for dynamic threshold, or one point (e.g. 50 30) for fixed.
+### Positional Arguments
+[TARGET]              Amino acid pattern(s) to scan for.
+                      Formats:
+                        X,Y    : independent tasks (e.g., D,E)
+                        X-Y    : combined task (e.g., D-E → polyDE)
+                        .X     : wildcard (e.g., .E → DE, AE, RE...), excludes XX
 
-Optional Arguments:
-  --mode fix            Use fixed-mode filtering (e.g., exactly 30 hits in 50aa)
-  -h, --help            Show this help message and exit
+### Required Arguments
+--input FILE          Input FASTA file (e.g., clinvar_mutant.fasta)
+--start INT           Starting window size (e.g., 20)
+--point x1 y1 [x2 y2] Points defining hit threshold vs window size.
+                      Example: 18 20 30 50 → linear model from (18,20) to (30,50)
+                      Use two points for dynamic threshold, or one point (e.g. 50 30) for fixed.
 
-Examples:
-  Independent scan for 20 amino acids:
-  python SERtool.py A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y --input clinvar_mutant.fasta --start 20 --point 18 20 30 50
+### Optional Arguments
+--mode fix            Use fixed-mode filtering (e.g., exactly 30 hits in 50aa)
+-h, --help            Show this help message and exit
 
-  Combined D-E analysis:
-  python SERtool.py D-E --input clinvar_mutant.fasta --start 20 --point 18 20 30 50
+### Examples:
 
-  Find ≥10 consecutive matches:
-  python SERtool.py D,E --input clinvar_mutant.fasta --start 10 --point 20 20 30 30
+Independent scan for 20 amino acids:
+```bash
+python SERtool.py A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y --input clinvar_mutant.fasta --start 20 --point 18 20 30 50
+```
 
-  Wildcard: all X-S motifs (e.g., DS, RS)
-  python SERtool .S --input clinvar_mutant.fasta --start 15 --point 5 10 10 30
+Combined D-E analysis:
+```bash
+python SERtool.py D-E --input clinvar_mutant.fasta --start 20 --point 18 20 30 50
+```
 
-  Fixed mode: find regions with at least 30 hits in 50aa
-  python SERtool.py A --input clinvar_mutant.fasta --mode fix --point 30 50
+Wildcard: all X-S motifs (e.g., DS, RS)
+```bash
+python SERtool .S --input clinvar_mutant.fasta --start 15 --point 5 10 10 30
+```
+
+Fixed mode: find regions with at least 30 hits in 50aa
+```bash
+python SERtool.py A --input clinvar_mutant.fasta --mode fix --point 30 50
+```
+
+
+Consecutive Mode: Screen consecutive target sequences
+Format: --point hit1 hit1 hit2 hit2
+Example: Find ≥10 consecutive matches: ***start=10***
+```bash
+python SERtool.py D,E --input clinvar_mutant.fasta --start 10 --point 20 20 30 30
+```
+
+
+Score Mode: Use weighted scoring (e.g., each hit counts as 1, but some positions contribute extra score).
+Format: --point hit1 [2*hit1 + score] hit2 [2*hit2 + score]
+Example: Interpreted as: threshold = 2×hit + 5. Enables non-linear sensitivity: ***score=5***
+```bash
+python SERtool.py A --input clinvar_mutant.fasta --start 15 --point 10 25 20 45
+```
+
+Rate Mode: Use proportional threshold (e.g., k×hit) for density-based filtering.
+Format: --point hit1 [k*hit1] hit2 [k*hit2]
+Example: Interpreted as: threshold = 3×hit (k=3). Ensures high-density regions (e.g., ≥30% occupancy): ***k=3***
+```bash
+python SERtool.py A --input clinvar_mutant.fasta --start 15 --point 10 30 20 60
+```
