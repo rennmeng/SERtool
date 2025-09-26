@@ -29,22 +29,22 @@ Build the extension first:
   ```
 
 ### Positional Arguments
-[TARGET]              Amino acid pattern(s) to scan for.
-                      Formats:
-                        X,Y    : independent tasks (e.g., D,E)
-                        X-Y    : combined task (e.g., D-E → polyDE)
-                        .X     : wildcard (e.g., .E → DE, AE, RE...), excludes XX
+`[TARGET]`  
+&nbsp;&nbsp;Amino acid pattern(s) to scan for.  
+&nbsp;&nbsp;Formats:  
+&nbsp;&nbsp;&nbsp;&nbsp;`X,Y`    : independent tasks (e.g., D,E)  
+&nbsp;&nbsp;&nbsp;&nbsp;`X-Y`    : combined task (e.g., D-E → polyDE)  
+&nbsp;&nbsp;&nbsp;&nbsp;`.X`     : wildcard (e.g., .E → DE, AE, RE...), excludes XX
 
 ### Required Arguments
---input FILE          Input FASTA file (e.g., clinvar_mutant.fasta)
---start INT           Starting window size (e.g., 20)
---point x1 y1 [x2 y2] Points defining hit threshold vs window size.
-                      Example: 18 20 30 50 → linear model from (18,20) to (30,50)
-                      Use two points for dynamic threshold, or one point (e.g. 50 30) for fixed.
-
-### Optional Arguments
---mode fix            Use fixed-mode filtering (e.g., exactly 30 hits in 50aa)
--h, --help            Show this help message and exit
+`--input FILE`  
+&nbsp;&nbsp;Input FASTA file (e.g., clinvar_mutant.fasta)  
+`--start INT`  
+&nbsp;&nbsp;Starting window size (e.g., 20)  
+`--point x1 y1 [x2 y2]`  
+&nbsp;&nbsp;Points defining hit threshold vs window size.  
+&nbsp;&nbsp;Example: 18 20 30 50 → linear model from (18,20) to (30,50)  
+&nbsp;&nbsp;Use two points for dynamic threshold, or one point (e.g. 50 30) for fixed.
 
 ### Examples:
 
@@ -79,7 +79,7 @@ Score Mode: Use weighted scoring (e.g., each hit counts as 1, but some positions
 Format: --point hit1 [2*hit1 + score] hit2 [2*hit2 + score]
 Example: Interpreted as: threshold = 2×hit + 10. Enables non-linear sensitivity: ***score=10***
 ```bash
-python SERtool.py A --input clinvar_mutant.fasta --start 15 --point 10 25 20 45
+python SERtool.py A --input clinvar_mutant.fasta --start 15 --point 10 30 20 50
 ```
 
 Rate Mode: Use proportional threshold (e.g., k×hit) for density-based filtering.
