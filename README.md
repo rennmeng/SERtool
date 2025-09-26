@@ -1,3 +1,4 @@
+```markdown
 # SERtool
 
 This tool is used to search for proteins with repetitive sequence amino acids and can also be applied to the search of nucleic acid sequences.
@@ -70,21 +71,22 @@ python SERtool.py A --input clinvar_mutant.fasta --mode fix --point 30 50
 
 Consecutive Mode: Screen consecutive target sequences
 Format: --point hit1 hit1 hit2 hit2
-Example: Find ≥10 consecutive matches: ***start***
+Example: Find ≥10 consecutive matches: ***start=10***
 ```bash
 python SERtool.py D,E --input clinvar_mutant.fasta --start 10 --point 20 20 30 30
 ```
 
 Score Mode: Use weighted scoring (e.g., each hit counts as 1, but some positions contribute extra score).
 Format: --point hit1 [2*hit1 + score] hit2 [2*hit2 + score]
-Example: Interpreted as: threshold = 2×hit + 5. Enables non-linear sensitivity: ***score***
+Example: Interpreted as: threshold = 2×hit + 10. Enables non-linear sensitivity: ***score=10***
 ```bash
 python SERtool.py A --input clinvar_mutant.fasta --start 15 --point 10 25 20 45
 ```
 
 Rate Mode: Use proportional threshold (e.g., k×hit) for density-based filtering.
 Format: --point hit1 [k*hit1] hit2 [k*hit2]
-Example: Interpreted as: threshold = 3×hit (k=3). Ensures high-density regions (e.g., ≥30% occupancy): ***k***
+Example: Interpreted as: threshold = 3×hit (k=3). Ensures high-density regions (e.g., ≥30% occupancy): ***k=3***
 ```bash
 python SERtool.py A --input clinvar_mutant.fasta --start 15 --point 10 30 20 60
+```
 ```
