@@ -1,0 +1,4 @@
+# Requirements for SERtool Analysis Script
+openpyxl>=3.1.0
+biopython>=1.81
+tqdm>=4.66.0
