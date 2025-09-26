@@ -2,8 +2,6 @@ use pyo3::prelude::*;
 use pyo3::types::PyDict;
 use rayon::prelude::*;
 use std::collections::HashMap;
-
-// 引入缺失的异常类型
 use pyo3::exceptions::PyValueError;
 
 #[pyclass]
@@ -61,13 +59,12 @@ fn count_hits_in_window(window: &str, words: &[&str]) -> u32 {
 
 #[pyfunction]
 fn scan_sequences_batch(
-    _py: Python,  // 显式传入但未使用，加 _ 前缀避免警告
+    _py: Python,
     sequences: &Bound<'_, PyDict>,
     words: Vec<String>,
     window_size: usize,
     min_hit: u32,
 ) -> PyResult<Vec<HitInfo>> {
-    // Step 1: 将 PyDict 复制到 Rust HashMap，脱离 GIL
     let seq_map: HashMap<String, String> = sequences
         .iter()
         .map(|(k, v)| {
@@ -81,11 +78,11 @@ fn scan_sequences_batch(
         })
         .collect::<PyResult<_>>()?;
 
-    // Step 2: 转为 Vec 以便并行处理
+    // Step 2:
     let seq_vec: Vec<(String, String)> = seq_map.into_iter().collect();
     let word_slices: Vec<&str> = words.iter().map(|s| s.as_str()).collect();
 
-    // Step 3: 并行扫描（完全在 Rust 中，无 GIL）
+    // Step 3:
     let results: Vec<HitInfo> = seq_vec
         .into_par_iter()
         .flat_map(|(gene_name, sequence)| {
@@ -148,11 +145,11 @@ fn calculate_k_b(
     Ok((k, b))
 }
 
-// ✅ 必须添加：模块入口
 #[pymodule]
 fn ser_tool(_py: Python, m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_function(wrap_pyfunction_bound!(scan_sequences_batch, m)?)?;
     m.add_function(wrap_pyfunction_bound!(calculate_k_b, m)?)?;
     m.add_class::<HitInfo>()?;
     Ok(())
+
 }
