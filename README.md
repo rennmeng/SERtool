@@ -94,4 +94,6 @@ python SERtool.py A --input clinvar_mutant.fasta --start 15 --point 10 30 20 60
 We generated a dataset of HVGS mutation sequences and developed a web-based tool for analysis, both of which are available at https://www.sertool.org. The dataset was processed, filtered, and standardized to construct a comprehensive collection of mutation sequences for downstream analysis of repetitive motifs and functional impact assessment(manuscript in preparation).
 
 ## About This Tool
-https://www.sertool.org</br>https://bio.tools/sertool
+https://www.sertool.org</br>https://bio.tools/sertool</br>
+If you encounter any issues with the Rust installation, you can use pySERtool.py instead, which is a pure Python implementation. Although it is relatively slower—approximately 20 times slower than the Rust version based on our previous benchmarks—it still meets the requirements for routine sequence searches.</br>
+Contect us:renmeng@smail.nju.edu.cn
