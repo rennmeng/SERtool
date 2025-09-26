@@ -89,4 +89,3 @@ Example: Interpreted as: threshold = 3×hit (k=3). Ensures high-density regions 
 ```bash
 python SERtool.py A --input clinvar_mutant.fasta --start 15 --point 10 30 20 60
 ```
-```
