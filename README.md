@@ -13,6 +13,7 @@ High-performance sequence scanning tool powered by Rust. Scans protein sequences
 This tool is written in Rust and requires:
   1. Rust toolchain: 
      ```bash
+     git clone https://github.com/rennmeng/SERtool
      cd SERtool
      ```
   2. maturin (Python): 
