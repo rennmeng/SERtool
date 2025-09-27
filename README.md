@@ -89,4 +89,4 @@ We generated a dataset of HVGS mutation sequences and developed a web-based tool
 ## About This Tool
 https://www.sertool.org</br>https://bio.tools/sertool</br>
 If you encounter any issues with the Rust installation, you can use pySERtool.py instead, which is a pure Python implementation. Although it is relatively slower—approximately 20 times slower than the Rust version based on our previous benchmarks—it still meets the requirements for routine sequence searches.</br>
-Contect us:renmeng@smail.nju.edu.cn
+Contact Us: renmeng@smail.nju.edu.cn
