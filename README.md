@@ -19,6 +19,7 @@ This tool is written in Rust and requires:
      ```
   2. Build maturin (Install the Rust core): 
      ```bash
+     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
      maturin build --release && pip install target/wheels/*.whl
      ```
 
