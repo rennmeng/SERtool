@@ -28,7 +28,7 @@ This tool is written in Rust and requires:
 &nbsp;&nbsp;Formats:  
 &nbsp;&nbsp;&nbsp;&nbsp;`X,Y`    : independent tasks (e.g., D,E)  
 &nbsp;&nbsp;&nbsp;&nbsp;`X-Y`    : combined task (e.g., D-E → polyDE)  
-&nbsp;&nbsp;&nbsp;&nbsp;`.X`     : wildcard (e.g., .E → DE, AE, RE...), excludes XX
+&nbsp;&nbsp;&nbsp;&nbsp;`.X`     : wildcard (e.g., .E → DE, AE, RE...)
 
 ### Required Arguments
 `--input FILE`  
