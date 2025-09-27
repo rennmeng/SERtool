@@ -17,9 +17,12 @@ This tool is written in Rust and requires:
      cd SERtool
      pip install -r requirements.txt
      ```
-  2. Build maturin (Install the Rust core): 
+  2. Install the Rust core: 
      ```bash
      curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+     ```
+  3. Build maturin (Install the Rust core): 
+     ```bash
      maturin build --release && pip install target/wheels/*.whl
      ```
 
