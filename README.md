@@ -11,23 +11,16 @@ High-performance sequence scanning tool powered by Rust. Scans protein sequences
 
 ### Prerequisites
 This tool is written in Rust and requires:
-  1. Rust toolchain: 
+  1. Install requirements: 
      ```bash
      git clone https://github.com/rennmeng/SERtool
      cd SERtool
+     pip install -r requirements.txt
      ```
-  2. maturin (Python): 
+  2. Build maturin (Install the Rust core): 
      ```bash
-     pip install .
+       build --release && pip install target/wheels/*.whl
      ```
-Build the extension first:
-  ```bash
-  maturin develop    # for development
-  ```
-  or
-  ```bash
-  maturin build --release && pip install target/wheels/*.whl
-  ```
 
 ### Positional Arguments
 `[TARGET]`  
