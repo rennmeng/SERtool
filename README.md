@@ -19,7 +19,7 @@ This tool is written in Rust and requires:
      ```
   2. Build maturin (Install the Rust core): 
      ```bash
-       build --release && pip install target/wheels/*.whl
+     maturin build --release && pip install target/wheels/*.whl
      ```
 
 ### Positional Arguments
