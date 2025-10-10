@@ -94,4 +94,4 @@ The dataset was processed, filtered, and standardized to construct a comprehensi
 ## About This Tool
 https://www.sertool.net</br>https://bio.tools/sertool</br>
 If you encounter any issues with the Rust installation, you can use pySERtool.py instead, which is a pure Python implementation. Although it is relatively slower—approximately 20 times slower than the Rust version based on our previous benchmarks—it still meets the requirements for routine sequence searches.</br>
-Contact Us: renmeng@smail.nju.edu.cn
+Contact Us: rennmeng@smail.nju.edu.cn
