@@ -58,7 +58,7 @@ python SERtool.py D-E --input clinvar_mutant.fasta --start 20 --point 18 20 30 5
 
 Wildcard: all X-S motifs (e.g., DS, RS)
 ```bash
-python SERtool .S --input clinvar_mutant.fasta --start 15 --point 5 10 10 30
+python SERtool.py .S --input clinvar_mutant.fasta --start 15 --point 5 10 10 30
 ```
 
 Fixed mode: find regions with at least 30 hits in 50aa
