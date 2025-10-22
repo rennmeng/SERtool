@@ -63,28 +63,28 @@ python SERtool.py .S --input test.fasta --start 15 --point 5 10 10 30
 
 Fixed mode: find regions with at least 30 hits in 50aa
 ```bash
-python SERtool.py A --input test.fasta --mode fix --point 30 50
+python SERtool.py E --input test.fasta --mode fix --point 30 50
 ```
 
 Consecutive Mode: Screen consecutive target sequences
 Format: --point hit1 hit1 hit2 hit2
 Example: Find ≥10 consecutive matches: ***start=10***
 ```bash
-python SERtool.py D,E --input test.fasta --start 10 --point 20 20 30 30
+python SERtool.py E --input test.fasta --start 10 --point 20 20 30 30
 ```
 
 Score Mode: Use weighted scoring (e.g., each hit counts as 1, but some positions contribute extra score).
 Format: --point hit1 [2*hit1 + score] hit2 [2*hit2 + score]
 Example: Interpreted as: window = 2×hit + 10. Enables non-linear sensitivity: ***score=10***
 ```bash
-python SERtool.py A --input test.fasta --start 15 --point 10 30 20 50
+python SERtool.py E --input test.fasta --start 15 --point 10 30 20 50
 ```
 
 Rate Mode: Use proportional threshold (e.g., k×hit) for density-based filtering.
 Format: --point hit1 [k*hit1] hit2 [k*hit2]
 Example: Interpreted as: window= 3×hit (k=3). Ensures high-density regions (e.g., ≥30% occupancy): ***k=3***
 ```bash
-python SERtool.py A --input test.fasta --start 15 --point 10 30 20 60
+python SERtool.py E --input test.fasta --start 15 --point 10 30 20 60
 ```
 
 ## Dataset
@@ -94,5 +94,5 @@ The dataset was processed, filtered, and standardized to construct a comprehensi
 ## About This Tool
 https://www.sertool.net</br>https://bio.tools/sertool</br>
 If you encounter any problem with the Rust installation, you can use pySERtool.py instead, which is a pure Python implementation. Although it is relatively slower—approximately 30-40 times slower than the Rust version based on our previous benchmarks—it still meets the requirements for routine sequence searches.</br>
-Notably, pySERtool supports configurable sequence step (step) and window sliding step (wstep), which were omitted from the Rust implementation due to limited performance gains and increased computational overhead. Dynamic stepping in the Rust version showed negligible improvement over simple iteration, likely due to reduced loop efficiency and hindered compiler optimization.</br>
+Notably, pySERtool supports configurable sequence step (step) and window sliding step (wstep), which were omitted from the Rust implementation due to limited performance gains and increased computational overhead. Dynamic stepping in the Rust version showed negligible improvement over simple iteration.</br>
 Contact Us: rennmeng@smail.nju.edu.cn
