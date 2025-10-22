@@ -82,9 +82,9 @@ python SERtool.py E --input test.fasta --start 15 --point 10 30 20 50
 
 Rate Mode: Use proportional threshold (e.g., k×hit) for density-based filtering.
 Format: --point hit1 [k*hit1] hit2 [k*hit2]
-Example: Interpreted as: window= 3×hit (k=3). Ensures high-density regions (e.g., ≥30% occupancy): ***k=3***
+Example: Interpreted as: window= 2×hit (k=2). Ensures high-density regions (e.g., ≥50% occupancy): ***k=2***
 ```bash
-python SERtool.py E --input test.fasta --start 15 --point 10 30 20 60
+python SERtool.py E --input test.fasta --start 15 --point 10 20 20 40
 ```
 
 ## Dataset
