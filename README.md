@@ -94,5 +94,5 @@ The dataset was processed, filtered, and standardized to construct a comprehensi
 ## About This Tool
 https://www.sertool.net</br>https://bio.tools/sertool</br>
 If you encounter any problem with the Rust installation, you can use pySERtool.py instead, which is a pure Python implementation. Although it is relatively slower—approximately 30-40 times slower than the Rust version based on our previous benchmarks—it still meets the requirements for routine sequence searches.</br>
-Notably, pySERtool supports configurable sequence step (step) and window sliding step (wstep), which were omitted from the Rust implementation due to limited performance gains and increased computational overhead. Dynamic stepping in the Rust version showed negligible improvement over simple iteration, likely due to reduced loop efficiency and hindered compiler optimization.
+Notably, pySERtool supports configurable sequence step (step) and window sliding step (wstep), which were omitted from the Rust implementation due to limited performance gains and increased computational overhead. Dynamic stepping in the Rust version showed negligible improvement over simple iteration, likely due to reduced loop efficiency and hindered compiler optimization.</br>
 Contact Us: rennmeng@smail.nju.edu.cn
