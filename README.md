@@ -48,7 +48,7 @@ This tool is written in Rust and requires:
 
 Independent scan for 20 amino acids:
 ```bash
-python SERtool.py A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y --input clinvar_mutant.fasta --start 20 --point 18 20 30 50
+python SERtool.py A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y --input test.fasta --start 20 --point 18 20 30 50
 ```
 
 Combined D-E analysis:
