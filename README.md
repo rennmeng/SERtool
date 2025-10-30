@@ -19,10 +19,13 @@ This tool is written in Rust and requires:
      ```
   2. Install the Rust core: 
      ```bash
+     sudo apt update
+     sudo apt install build-essential
      curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
      ```
-  3. Build maturin (Install the Rust core): 
+  3. Build maturin (Install SERtool): 
      ```bash
+     . "$HOME/.cargo/env"
      maturin build --release && pip install target/wheels/*.whl
      ```
 
