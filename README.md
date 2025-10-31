@@ -50,46 +50,46 @@ PATTERN formats:<br>
 
 ### Examples:
 
-Independent scan for 20 amino acids:
+1.Independent scan for 20 amino acids:
 ```bash
 python SERtool.py A,C,D,E,F,G,H,I,K,L,M,N,P,Q,R,S,T,V,W,Y --input test.fasta --start 20 --point 18 20 30 50
 ```
 
-Motif DE analysis:
+2.Motif DE analysis:
 ```bash
 python SERtool.py DE --input test.fasta --start 20 --point 9 20 15 50
 ```
 
-Same class D-E analysis:
+3.Same class D-E analysis:
 ```bash
 python SERtool.py D-E --input test.fasta --start 20 --point 18 20 30 50
 ```
 
-Wildcard: all X-S motifs (e.g., DS, RS)
+4.Wildcard: all X-S motifs (e.g., DS, RS)
 ```bash
 python SERtool.py .S --input test.fasta --start 15 --point 5 10 10 30
 ```
 
-Fixed mode: find regions with at least 30 hits in 50aa
+5.Fixed mode: find regions with at least 30 hits in 50aa
 ```bash
 python SERtool.py E --input test.fasta --mode fix --point 30 50
 ```
 
-Consecutive residue scan: Screen consecutive target sequences
+6.Consecutive residue scan: Screen consecutive target sequences
 Format: --point hit1 hit1 hit2 hit2
 Example: Find ≥10 consecutive matches: ***start=10***
 ```bash
 python SERtool.py E --input test.fasta --start 10 --point 20 20 30 30
 ```
 
-Score-based Screening: Use weighted scoring (e.g., each hit counts as 1, but some positions contribute extra score).
+7.Score-based Screening: Use weighted scoring (e.g., each hit counts as 1, but some positions contribute extra score).
 Format: --point hit1 [2*hit1 + score] hit2 [2*hit2 + score]
 Example: Interpreted as: window = 2×hit + 10. Enables non-linear sensitivity: ***score=10***
 ```bash
 python SERtool.py E --input test.fasta --start 15 --point 10 30 20 50
 ```
 
-Proportion-based Screening: Use proportional threshold (e.g., k×hit) for density-based filtering.
+8.Proportion-based Screening: Use proportional threshold (e.g., k×hit) for density-based filtering.
 Format: --point hit1 [k*hit1] hit2 [k*hit2]
 Example: Interpreted as: window= 2×hit (k=2). Ensures high-density regions (e.g., ≥50% occupancy): ***k=2***
 ```bash
