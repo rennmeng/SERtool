@@ -31,14 +31,14 @@ This tool is written in Rust and requires:
 PATTERN formats:<br>
 &nbsp;&nbsp;<code>X,Y</code>&nbsp;&nbsp;&nbsp;: Independent scan (e.g., <code>D,E</code> → poly-D and poly-E)<br>
 &nbsp;&nbsp;<code>XY</code>&nbsp;&nbsp;&nbsp;&nbsp;: Motif (e.g., <code>DE</code> → DEDEDE)<br>
-&nbsp;&nbsp;<code>X-Y</code>&nbsp;&nbsp;&nbsp;: Same class class (e.g., <code>D-E</code> → DDDEEDE)<br>
+&nbsp;&nbsp;<code>X-Y</code>&nbsp;&nbsp;&nbsp;: Same class (e.g., <code>D-E</code> → DDDEEDE)<br>
 &nbsp;&nbsp;<code>.X</code>&nbsp;&nbsp;&nbsp;&nbsp;: Wildcard (e.g., <code>.E</code> → any-E)
 
 ### Required Arguments
 `--input FILE`  
 &nbsp;&nbsp;Input FASTA file (e.g., test.fasta)  
 `--start INT`  
-&nbsp;&nbsp;Start window size (e.g., 20) 
+&nbsp;&nbsp;Start window size (e.g., 20)  
 `--end INT`  
 &nbsp;&nbsp;End window size (e.g., 100)  
 `--mode STR`  
@@ -46,7 +46,7 @@ PATTERN formats:<br>
 `--point x1 y1 [x2 y2]`  
 &nbsp;&nbsp;Points defining hit threshold vs window size.  
 &nbsp;&nbsp;Example: 18 20 30 50 → linear model from (18,20) to (30,50)  
-&nbsp;&nbsp;Use two points for dynamic threshold, or one point (e.g. 50 30) for fixed.
+&nbsp;&nbsp;Use two points for dynamic threshold, or one point (e.g. 30 50) for fixed.
 
 ### Examples:
 
