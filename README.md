@@ -30,13 +30,11 @@ This tool is written in Rust and requires:
      ```
 
 ### Positional Arguments
-`[TARGET]`  
-&nbsp;&nbsp;Amino acid pattern(s) to scan for.  
-&nbsp;&nbsp;Formats:  
-&nbsp;&nbsp;&nbsp;&nbsp;`X,Y`    : independent tasks (e.g., D,E → DDDXXXDDD,EEEEEXXXXEEE)
-&nbsp;&nbsp;&nbsp;&nbsp;`XY`    : motif tasks (e.g., DE → DEDEDEDEDE)   
-&nbsp;&nbsp;&nbsp;&nbsp;`X-Y`    : same class (e.g., D-E → DDDEEDDDEEEDE)  
-&nbsp;&nbsp;&nbsp;&nbsp;`.X`     : wildcard (e.g., .E → DE, AE, RE...)
+PATTERN formats:<br>
+&nbsp;&nbsp;<code>X,Y</code>&nbsp;&nbsp;&nbsp;: Independent scan (e.g., <code>D,E</code> → poly-D and poly-E)<br>
+&nbsp;&nbsp;<code>XY</code>&nbsp;&nbsp;&nbsp;&nbsp;: Tandem motif (e.g., <code>DE</code> → DEDEDE)<br>
+&nbsp;&nbsp;<code>X-Y</code>&nbsp;&nbsp;&nbsp;: Mixed class (e.g., <code>D-E</code> → DDDEEDE)<br>
+&nbsp;&nbsp;<code>.X</code>&nbsp;&nbsp;&nbsp;&nbsp;: Wildcard (e.g., <code>.E</code> → any-E)
 
 ### Required Arguments
 `--input FILE`  
