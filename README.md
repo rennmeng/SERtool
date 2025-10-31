@@ -33,15 +33,20 @@ This tool is written in Rust and requires:
 `[TARGET]`  
 &nbsp;&nbsp;Amino acid pattern(s) to scan for.  
 &nbsp;&nbsp;Formats:  
-&nbsp;&nbsp;&nbsp;&nbsp;`X,Y`    : independent tasks (e.g., D,E)  
-&nbsp;&nbsp;&nbsp;&nbsp;`X-Y`    : combined task (e.g., D-E → polyDE)  
+&nbsp;&nbsp;&nbsp;&nbsp;`X,Y`    : independent tasks (e.g., D,E → DDDXXXDDD,EEEEEXXXXEEE)
+&nbsp;&nbsp;&nbsp;&nbsp;`XY`    : motif tasks (e.g., DE → DEDEDEDEDE)   
+&nbsp;&nbsp;&nbsp;&nbsp;`X-Y`    : same class (e.g., D-E → DDDEEDDDEEEDE)  
 &nbsp;&nbsp;&nbsp;&nbsp;`.X`     : wildcard (e.g., .E → DE, AE, RE...)
 
 ### Required Arguments
 `--input FILE`  
-&nbsp;&nbsp;Input FASTA file (e.g., clinvar_mutant.fasta)  
+&nbsp;&nbsp;Input FASTA file (e.g., test.fasta)  
 `--start INT`  
-&nbsp;&nbsp;Starting window size (e.g., 20)  
+&nbsp;&nbsp;Start window size (e.g., 20) 
+`--end INT`  
+&nbsp;&nbsp;End window size (e.g., 100)  
+`--mode STR`  
+&nbsp;&nbsp;mode (Options: formula (default) or fix)  
 `--point x1 y1 [x2 y2]`  
 &nbsp;&nbsp;Points defining hit threshold vs window size.  
 &nbsp;&nbsp;Example: 18 20 30 50 → linear model from (18,20) to (30,50)  
