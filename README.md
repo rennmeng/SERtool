@@ -1,13 +1,14 @@
 # SERtool
 
-This tool is used to search for proteins with repetitive sequence amino acids and can also be applied to the search of nucleic acid sequences.
+Detection of Sequence-Enriched Regions (SER) in Proteins and Nucleic Acids
 
 ## Usage
 ```bash
-python SERtool.py [TARGET] --input FILE --start INT --point INT INT [INT INT]
+python SERtool.py TARGET --input FILE [--start INT] [--end INT] [--mode STR] --point INT INT [INT INT]
 ```
 
 High-performance sequence scanning tool powered by Rust. Scans protein sequences for amino acid patterns with dynamic hit thresholds.
+This tool requires **Python 3.8 or higher** (Python 2 is not supported) and Linux.
 
 ### Prerequisites
 This tool is written in Rust and requires:
@@ -19,7 +20,7 @@ This tool is written in Rust and requires:
      ```
   2. Install the Rust core: 
      ```bash
-     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
      ```
   3. Build maturin (Install SERtool): 
      ```bash
@@ -34,13 +35,13 @@ PATTERN formats:<br>
 &nbsp;&nbsp;<code>X-Y</code>&nbsp;&nbsp;&nbsp;: Same class (e.g., <code>D-E</code> → DDDEEDE)<br>
 &nbsp;&nbsp;<code>.X</code>&nbsp;&nbsp;&nbsp;&nbsp;: Wildcard (e.g., <code>.E</code> → any-E)
 
-### Required Arguments
+### Arguments
 `--input FILE`  
 &nbsp;&nbsp;Input FASTA file (e.g., test.fasta)  
 `--start INT`  
-&nbsp;&nbsp;Start window size (e.g., 20)  
+&nbsp;&nbsp;Start window size (e.g., 20 (default))  
 `--end INT`  
-&nbsp;&nbsp;End window size (e.g., 100)  
+&nbsp;&nbsp;End window size (e.g., 100 (default))  
 `--mode STR`  
 &nbsp;&nbsp;mode (Options: formula (default) or fix)  
 `--point x1 y1 [x2 y2]`  
@@ -75,9 +76,8 @@ python SERtool.py .S --input test.fasta --start 15 --point 5 10 10 30
 python SERtool.py E --input test.fasta --mode fix --point 30 50
 ```
 
-6. Consecutive residue scan: Screen consecutive target sequences
-Format: --point hit1 hit1 hit2 hit2
-Example: Find ≥10 consecutive matches: ***start=10***
+6. Full-density screening (100% occupancy):  
+Find regions where every residue in the window matches the target (e.g., a stretch of ***≥10*** consecutive E residues, hit=window): 
 ```bash
 python SERtool.py E --input test.fasta --start 10 --point 20 20 30 30
 ```
