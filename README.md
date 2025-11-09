@@ -21,7 +21,7 @@ This tool is written in Rust and requires:
   2. Install Rust-sertool:
      If you are using Python 3.8 on Linux, you can now install the pre-built Rust core and skip next step entirely:
      ```bash
-     pip install https://github.com/rennmeng/SERtool/releases/download/v1.0.0/ser_tool-0.1.0-cp38-cp38-manylinux_2_31_x86_64.whl
+     pip install https://www.sertool.net/File/ser_tool-0.1.0-cp38-cp38-manylinux_2_28_x86_64.whl
      ``` 
      Otherwise (other Python versions or OS), build from source: 
      ```bash
