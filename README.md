@@ -99,7 +99,7 @@ python SERtool.py E --input test.fasta --start 15 --point 10 20 20 40
 ```
 
 ## Dataset
-We generated a dataset of HGVS frameshift sequences and developed a web-based tool for analysis(manuscript in preparation), both of which are available at https://www.sertool.net.</br>
+We generated a dataset of HGVS frameshift sequences and developed a web-based tool for analysis, both of which are available at https://www.sertool.net.</br>
 The dataset was processed, filtered, and standardized to construct a comprehensive collection of mutation sequences for downstream analysis of repetitive motifs and functional impact assessment, VCF files were obtained by August 2, 2025.
 
 ## About This Tool
